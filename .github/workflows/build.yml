@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  compile-cubiomes:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
@@ -30,7 +30,7 @@ jobs:
         distribution: 'temurin'    
 
     - name: Build on ubuntu-latest
-		  if: matrix.os == 'ubuntu-latest'
+			if: matrix.os == 'ubuntu-latest'
       working-directory: cubiomes
       run: |
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
