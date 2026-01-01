@@ -34,9 +34,10 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       working-directory: cubiomes
       run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-          cmake --build build --config Release
-          cp build/libcubiomes.so ../../libcubiomes.so
+        cmake -B build -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        cmake --build build --config Release
+        cp build/libcubiomes.so ../../libcubiomes.so
 
     - name: Compile in macos-latest
       if: matrix.os == 'macos-latest'
@@ -63,6 +64,7 @@ jobs:
       working-directory: cubiomes
       shell: msys2 {0}
       run: |
+        cmake -B build -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
         cmake --build build --config Release
         cp build/libcubiomes.dll ../../libcubiomes.dll
