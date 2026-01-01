@@ -68,3 +68,24 @@ jobs:
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
         cmake --build build --config Release
         cp build/libcubiomes.dll ../../libcubiomes.dll
+
+    - name: Upload Artifact in ubuntu-latest
+      if: matrix.os == 'ubuntu-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: libcubiomes.so
+        path: libcubiomes.so
+        
+    - name: Upload Artifact in macos-latest
+      if: matrix.os == 'macos-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: libcubiomes.dylib
+        path: libcubiomes.dylib
+        
+    - name: Upload Artifact in windows-latest
+      if: matrix.os == 'windows-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: cubiomes.dll
+        path: cubiomes.dll
