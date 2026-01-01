@@ -18,5 +18,24 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - name: Test
-      run: echo "hello world"
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '23'  # JDK 23+
+        distribution: 'temurin'    
+
+    - name: Install build dependencies
+      run: |
+        if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+          sudo apt-get update
+          sudo apt-get install -y build-essential clang libclang-dev
+        elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+          brew install llvm
+        elif [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+          choco install llvm
+        fi
