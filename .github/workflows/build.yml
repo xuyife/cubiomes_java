@@ -30,9 +30,38 @@ jobs:
         java-version: '23'  # JDK 23+
         distribution: 'temurin'
 
-    - name: Compile shared library (ubuntu-latest)
+    - name: Compile in ubuntu-latest
       if: matrix.os == 'ubuntu-latest'
       working-directory: cubiomes
       run: |
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
           cmake --build build --config Release
+          cp build/libcubiomes.so ../../libcubiomes.so
+
+    - name: Compile in macos-latest
+      if: matrix.os == 'macos-latest'
+      working-directory: cubiomes
+      run: |
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
+        cmake --build build --config Release
+        cp build/libcubiomes.dylib ../../libcubiomes.dylib
+
+    - name: Setup MSYS2 in windows-latest
+      if: matrix.os == 'windows-latest'
+      uses: msys2/setup-msys2@v2
+      with:
+        update: true
+        install: >
+          base-devel
+          mingw-w64-x86_64-toolchain
+          mingw-w64-x86_64-cmake
+          mingw-w64-x86_64-ninja
+
+    - name: Compile in windows-latest
+      if: matrix.os == 'windows-latest'
+      working-directory: cubiomes
+      shell: msys2 {0}
+      run: |
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        cmake --build build --config Release
+        cp build/libcubiomes.dll ../../libcubiomes.dll
