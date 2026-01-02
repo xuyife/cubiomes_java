@@ -155,7 +155,12 @@ jobs:
           name: cubiomes_java.jar
           path: output/cubiomes_java.jar
 
+      - name: Delete Jar
+        working-directory: output
+        run: sudo rm -rf cubiomes_java.jar
+
       - name: Publish package
+        working-directory: output
         run: mvn --batch-mode deploy
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
