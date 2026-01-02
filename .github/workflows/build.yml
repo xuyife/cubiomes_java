@@ -91,7 +91,7 @@ jobs:
         path: libcubiomes.dll
 
   compile_jextract:
-    name: Compile jextract
+    name: Compile Jextract And Build
     needs: compile-cubiomes
     runs-on: ubuntu-latest
     env:
@@ -129,3 +129,33 @@ jobs:
       - name: Compile jextract
         working-directory: jextract
         run: ./gradlew --stacktrace -Pjdk_home=$JAVA_HOME -Pllvm_home=$LLVM_HOME clean verify    
+
+      - name: Build
+        working-directory: jextract
+        run: |
+          $CMD="./build/jextract/bin/jextract \
+            --include-dir cubiomes \
+            --output src/main/java \
+            --use-system-load-library \
+            --target-package com.github.cubiomes \
+            --header-class-name Cubiomes \
+            @includes.txt \
+            biomenoise.h \
+            biomes.h \
+            finders.h \
+            generator.h \
+            layers.h \
+            noise.h \
+            rng.h \
+            util.h \
+            quadbase.h \
+            xrms.h \
+            loot/items.h \
+            loot/logging.h \
+            loot/loot_functions.h \
+            loot/loot_table_context.h \
+            loot/loot_table_parser.h \
+            loot/loot_tables.h \
+            loot/mc_loot.h"
+
+          eval $CMD
