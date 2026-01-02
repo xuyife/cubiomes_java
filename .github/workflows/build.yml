@@ -132,4 +132,4 @@ jobs:
 
       - name: Build
         working-directory: jextract
-        run: ./build/jextract/bin/jextract --include-dir ../ --output src/main/java --use-system-load-library --target-package com.github. --header-class-name  @../includes.txt biomenoise.h biomes.h finders.h generator.h layers.h noise.h rng.h util.h quadbase.h xrms.h loot/items.h loot/logging.h loot/loot_functions.h loot/loot_table_context.h loot/loot_table_parser.h loot/loot_tables.h loot/mc_loot.h
+        run: ./build/jextract/bin/jextract --include-dir ../cubiomes --output src/main/java --use-system-load-library --target-package com.github. --header-class-name  @../includes.txt biomenoise.h biomes.h finders.h generator.h layers.h noise.h rng.h util.h quadbase.h xrms.h loot/items.h loot/logging.h loot/loot_functions.h loot/loot_table_context.h loot/loot_table_parser.h loot/loot_tables.h loot/mc_loot.h
