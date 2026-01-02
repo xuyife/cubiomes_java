@@ -1,7 +1,7 @@
 [submodule "cubiomes"]
 	path = cubiomes
 	url = https://github.com/xpple/cubiomes.git
-	branch = master
+	branch = f4049d008826b822989013b53e560f5e6c7e96f3
 [submodule "jextract"]
 	path = jextract
 	url = https://github.com/openjdk/jextract.git
