@@ -134,7 +134,7 @@ jobs:
         working-directory: jextract
         run: |
           $CMD="./build/jextract/bin/jextract \
-            --include-dir cubiomes \
+            --include-dir ../cubiomes \
             --output src/main/java \
             --use-system-load-library \
             --target-package com.github.cubiomes \
