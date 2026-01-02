@@ -67,7 +67,7 @@ jobs:
         cmake -B build -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
         cmake --build build --config Release
-        cp build/libcubiomes.dll ../libcubiomes.dll
+        cp build/cubiomes.dll ../cubiomes.dll
 
     - name: Upload Artifact in ubuntu-latest
       if: matrix.os == 'ubuntu-latest'
@@ -87,8 +87,8 @@ jobs:
       if: matrix.os == 'windows-latest'
       uses: actions/upload-artifact@v4
       with:
-        name: libcubiomes.dll
-        path: libcubiomes.dll
+        name: cubiomes.dll
+        path: cubiomes.dll
 
   compile_jextract:
     name: Compile Jextract And Build
