@@ -132,7 +132,4 @@ jobs:
 
       - name: Build
         working-directory: jextract
-        run: |
-          $CMD="./build/jextract/bin/jextract --help"
-
-          eval $CMD
+        run: ./build/jextract/bin/jextract --help
