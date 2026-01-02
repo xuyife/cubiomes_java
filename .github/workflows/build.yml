@@ -1,4 +1,4 @@
-name: Build and Publish cubiomes-java
+name: Build and Publish -java
 
 on:
   push:
@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  compile-cubiomes:
-    name: Compile Cubiomes
+  compile-:
+    name: Compile 
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
@@ -32,21 +32,21 @@ jobs:
 
     - name: Compile in ubuntu-latest
       if: matrix.os == 'ubuntu-latest'
-      working-directory: cubiomes
+      working-directory: 
       run: |
         cmake -B build -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
         cmake --build build --config Release
-        cp build/libcubiomes.so ../libcubiomes.so
+        cp build/lib.so ../lib.so
 
     - name: Compile in macos-latest
       if: matrix.os == 'macos-latest'
-      working-directory: cubiomes
+      working-directory: 
       run: |
         cmake -B build -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
         cmake --build build --config Release
-        cp build/libcubiomes.dylib ../libcubiomes.dylib
+        cp build/lib.dylib ../lib.dylib
 
     - name: Setup MSYS2 in windows-latest
       if: matrix.os == 'windows-latest'
@@ -61,38 +61,38 @@ jobs:
 
     - name: Compile in windows-latest
       if: matrix.os == 'windows-latest'
-      working-directory: cubiomes
+      working-directory: 
       shell: msys2 {0}
       run: |
         cmake -B build -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
         cmake --build build --config Release
-        cp build/libcubiomes.dll ../libcubiomes.dll
+        cp build/lib.dll ../lib.dll
 
     - name: Upload Artifact in ubuntu-latest
       if: matrix.os == 'ubuntu-latest'
       uses: actions/upload-artifact@v4
       with:
-        name: libcubiomes.so
-        path: libcubiomes.so
+        name: lib.so
+        path: lib.so
         
     - name: Upload Artifact in macos-latest
       if: matrix.os == 'macos-latest'
       uses: actions/upload-artifact@v4
       with:
-        name: libcubiomes.dylib
-        path: libcubiomes.dylib
+        name: lib.dylib
+        path: lib.dylib
         
     - name: Upload Artifact in windows-latest
       if: matrix.os == 'windows-latest'
       uses: actions/upload-artifact@v4
       with:
-        name: libcubiomes.dll
-        path: libcubiomes.dll
+        name: lib.dll
+        path: lib.dll
 
   compile_jextract:
     name: Compile Jextract And Build
-    needs: compile-cubiomes
+    needs: compile-
     runs-on: ubuntu-latest
     env:
         LLVM_HOME: /usr/lib/llvm-13
@@ -132,4 +132,4 @@ jobs:
 
       - name: Build
         working-directory: jextract
-        run: ./build/jextract/bin/jextract --include-dir ../cubiomes --output src/main/java --use-system-load-library --target-package com.github.cubiomes --header-class-name Cubiomes @../includes.txt biomenoise.h biomes.h finders.h generator.h layers.h noise.h rng.h util.h quadbase.h xrms.h loot/items.h loot/logging.h loot/loot_functions.h loot/loot_table_context.h loot/loot_table_parser.h loot/loot_tables.h loot/mc_loot.h
+        run: ./build/jextract/bin/jextract --include-dir ../ --output src/main/java --use-system-load-library --target-package com.github. --header-class-name  @../includes.txt biomenoise.h biomes.h finders.h generator.h layers.h noise.h rng.h util.h quadbase.h xrms.h loot/items.h loot/logging.h loot/loot_functions.h loot/loot_table_context.h loot/loot_table_parser.h loot/loot_tables.h loot/mc_loot.h
