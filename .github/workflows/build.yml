@@ -105,7 +105,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
-          merge-multiple: true
+          merge-multiple: false
           path: /
 
       - name: Validate gradle wrapper
