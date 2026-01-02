@@ -1,6 +1,6 @@
 # cubiomes-java: Java Bindings for Cubiomes Library
 
-[![Java CI with Maven](https://github.com/xuyife/cubiomes-java/actions/workflows/build.yml/badge.svg)](https://github.com/yourusername/cubiomes-java/actions/workflows/build.yml)
+[![Java CI with Maven](https://github.com/xuyife/cubiomes-java/actions/workflows/build.yml/badge.svg)](https://github.com/xuyife/cubiomes-java/actions/workflows/build.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.cubiomes/cubiomes-java.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/com.github.cubiomes/cubiomes-java)
 [![GitHub release](https://img.shields.io/github/v/release/yourusername/cubiomes-java)](https://github.com/yourusername/cubiomes-java/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
