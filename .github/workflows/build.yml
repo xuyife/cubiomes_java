@@ -116,6 +116,10 @@ jobs:
         with:
           java-version: 23
           distribution: 'temurin'
+          server-id: sonatype-nexus-staging
+          server-username: ${{ secrets.OSSRH_USERNAME }}
+          server-password: ${{ secrets.OSSRH_TOKEN }}
+          gpg-passphrase:  ${{ secrets.GPG_PASSWORD }}
 
       - name: Make Gradle wrapper executable
         run: chmod +x ./jextract/gradlew    
