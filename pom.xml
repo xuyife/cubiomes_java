@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.xuyife</groupId>
+    <artifactId>cubiomes_java</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <name>Cubiomes Java</name>
+    <description>High-performance Java language bindings for the cubiomes world generation library.</description>
+    <url>https://github.com/xuyife/cubiomes_java</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://mit-license.org</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/xuyife/cubiomes_java</url>
+        <connection>scm:git:https://github.com/xuyife/cubiomes_java.git</connection>
+        <developerConnection>scm:git:https://github.com/xuyife/cubiomes_java.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>xuyifei</name>
+            <email>xuyifeiDev@outlook.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+</project>
