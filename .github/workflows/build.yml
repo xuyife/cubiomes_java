@@ -133,7 +133,15 @@ jobs:
       - name: Build
         working-directory: jextract
         run: |
-          ./build/jextract/bin/jextract --include-dir ../cubiomes --output ../output --use-system-load-library --target-package io.github.xuyife --header-class-name Cubiomes @../includes.txt biomenoise.h biomes.h finders.h generator.h layers.h noise.h rng.h util.h quadbase.h xrms.h loot/items.h loot/logging.h loot/loot_functions.h loot/loot_table_context.h loot/loot_table_parser.h loot/loot_tables.h loot/mc_loot.h
+          sudo mkdir ../output
+          sudo mkdir ../output/src
+          sudo mkdir ../output/src/main
+          sudo mkdir ../output/src/test
+          sudo mkdir ../output/src/main/java
+          sudo mkdir ../output/src/main/resources
+          sudo mkdir ../output/src/test/java
+          sudo mkdir ../output/src/test/resources
+          ./build/jextract/bin/jextract --include-dir ../cubiomes --output ../output/src/main/java --use-system-load-library --target-package io.github.xuyife --header-class-name Cubiomes @../includes.txt biomenoise.h biomes.h finders.h generator.h layers.h noise.h rng.h util.h quadbase.h xrms.h loot/items.h loot/logging.h loot/loot_functions.h loot/loot_table_context.h loot/loot_table_parser.h loot/loot_tables.h loot/mc_loot.h
           cp ../pom.xml ../output/pom.xml
 
       - name: Package
