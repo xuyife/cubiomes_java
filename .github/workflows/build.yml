@@ -149,8 +149,14 @@ jobs:
         working-directory: output
         run: jar cvf cubiomes_java.jar .
 
-      - name: Upload Artifact
+      - name: Upload Jar
         uses: actions/upload-artifact@v4
         with:
           name: cubiomes_java.jar
           path: output/cubiomes_java.jar
+
+      - name: Publish package
+        run: mvn --batch-mode deploy
+        env:
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
