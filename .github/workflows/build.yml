@@ -165,6 +165,7 @@ jobs:
         run: sudo rm -rf cubiomes_java.jar
 
       - name: Publish package
+        working-directory: output
         run: mvn deploy
         env:
           SERVER_USERNAME: ${{ secrets.OSSRH_USERNAME }}
