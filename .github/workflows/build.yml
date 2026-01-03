@@ -119,6 +119,7 @@ jobs:
           server-id: sonatype-nexus-staging
           server-username: ${{ secrets.OSSRH_USERNAME }}
           server-password: ${{ secrets.OSSRH_TOKEN }}
+          gpg-private-key: ${{ secrets.GPG_SECRET }}
           gpg-passphrase:  ${{ secrets.GPG_PASSWORD }}
 
       - name: Make Gradle wrapper executable
@@ -164,10 +165,8 @@ jobs:
         run: sudo rm -rf cubiomes_java.jar
 
       - name: Publish package
-        uses: samuelmeuli/action-maven-publish@v1
-        with:
-          directory: output
-          gpg_private_key: ${{ secrets.GPG_SECRET }}
-          gpg_passphrase: ${{ secrets.GPG_PASSWORD }}
-          nexus_username: ${{ secrets.OSSRH_USERNAME }}
-          nexus_password: ${{ secrets.OSSRH_TOKEN }}
+        run: mvn deploy
+        env:
+          SERVER_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          SERVER_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSWORD }}
