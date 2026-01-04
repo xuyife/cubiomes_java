@@ -164,6 +164,20 @@ jobs:
         working-directory: output
         run: sudo rm -rf cubiomes_java.jar
 
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_SECRET }}
+          passphrase: ${{ secrets.GPG_PASSWORD }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          
+      - name: Configure GPG for Maven
+        run: |
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          chmod 600 ~/.gnupg/*
+
       - name: Publish package
         working-directory: output
         run: mvn deploy
